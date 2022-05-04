@@ -1,4 +1,5 @@
 from tkinter import *
+from cell import Cell
 import settings
 import utils
 
@@ -38,6 +39,8 @@ center_frame.place(
     x=utils.width_prct(25),
     y=utils.height_prct(25),
 )
+
+c1 = Cell()
 
 # Run the window
 root.mainloop()
