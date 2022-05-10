@@ -30,6 +30,11 @@ class Cell:
     def left_click_actions(self, event):
         if self.is_mine:
             self.show_mine()
+        else:
+            self.show_cell()
+
+    def show_cell(self):
+        print(event)
 
     def show_mine(self):
         # a logic to game over
