@@ -34,7 +34,7 @@ class Cell:
             self.show_cell()
 
     def show_cell(self):
-        print(event)
+        print('Teste')
 
     def show_mine(self):
         # a logic to game over
