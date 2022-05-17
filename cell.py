@@ -53,7 +53,7 @@ class Cell:
                     cell_obj.show_cell()
             self.show_cell()
             # Check for Winner
-            if Cell.cell.count == settings.MINES_COUNT:
+            if Cell.cell_count == settings.MINES_COUNT:
                 ctypes.windll.user32.MessageBoxW(0, 'Congratulations! Won the Game!', 'Game Over', 0)
 
 
