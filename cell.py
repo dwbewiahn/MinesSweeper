@@ -31,7 +31,13 @@ class Cell:
         if self.is_mine:
             self.show_mine()
         else:
+            if self.surrounded_cells_mines_length == 0:
+                for cell_obj in self.surrounded_cells:
+                    cell_obj.show_cell()
             self.show_cell()
+
+    def right_click_actions(self, event):
+        print(event)
 
     def get_cell_by_axis(self, x, y):
         # Return a cell object based on the value of x,y
@@ -41,16 +47,16 @@ class Cell:
 
     @property
     def surrounded_cells(self):
-        # cells = [
-        #     self.get_cell_by_axis(self.x - 1, self.y - 1),
-        #     self.get_cell_by_axis(self.x - 1, self.y),
-        #     self.get_cell_by_axis(self.x - 1, self.y + 1),
-        #     self.get_cell_by_axis(self.x, self.y - 1),
-        #     self.get_cell_by_axis(self.x + 1, self.y - 1),
-        #     self.get_cell_by_axis(self.x + 1, self.y),
-        #     self.get_cell_by_axis(self.x + 1, self.y + 1),
-        #     self.get_cell_by_axis(self.x, self.y + 1),
-        # ]
+        cells = [
+            self.get_cell_by_axis(self.x - 1, self.y - 1),
+            self.get_cell_by_axis(self.x - 1, self.y),
+            self.get_cell_by_axis(self.x - 1, self.y + 1),
+            self.get_cell_by_axis(self.x, self.y - 1),
+            self.get_cell_by_axis(self.x + 1, self.y - 1),
+            self.get_cell_by_axis(self.x + 1, self.y),
+            self.get_cell_by_axis(self.x + 1, self.y + 1),
+            self.get_cell_by_axis(self.x, self.y + 1),
+        ]
 
         cells = [cell for cell in cells if cell is not None]
         return cells
@@ -70,8 +76,6 @@ class Cell:
         # a logic to game over
         self.cell_btn_object.configure(bg='red')
 
-    def right_click_actions(self, event):
-        print(event)
 
     @staticmethod
     def randomize_mines():
