@@ -1,7 +1,8 @@
 from tkinter import Button, Label
 import random
 import settings
-
+import ctypes
+import sys
 
 class Cell:
     all = []
@@ -11,6 +12,7 @@ class Cell:
     def __init__(self, x, y, is_mine=False):
         self.is_mine = is_mine
         self.is_opened = False
+        self.is_mine_candidate = False
         self.cell_btn_object = None
         self.x = x
         self.y = y
@@ -50,9 +52,26 @@ class Cell:
                 for cell_obj in self.surrounded_cells:
                     cell_obj.show_cell()
             self.show_cell()
+            # Check for Winner
+            if Cell.cell.count == settings.MINES_COUNT:
+                ctypes.windll.user32.MessageBoxW(0, 'Congratulations! Won the Game!', 'Game Over', 0)
+
+
+        # Lock and open cell
+        self.cell_btn_object.unbind('<Button-1>')
+        self.cell_btn_object.unbind('<Button-3>')
 
     def right_click_actions(self, event):
-        print(event)
+        if not self.is_mine_candidate:
+            self.cell_btn_object.configure(
+                bg='orange'
+            )
+            self.is_mine_candidate = True
+        else:
+            self.cell_btn_object.configure(
+                bg='SystemButtonFace'
+            )
+            self.is_mine_candidate = False
 
     def get_cell_by_axis(self, x, y):
         # Return a cell object based on the value of x,y
@@ -92,12 +111,15 @@ class Cell:
                 Cell.cell_count_label_object.configure(
                     text=f'Cells Left:{Cell.cell_count}'
                 )
+            self.cell_btn_object.configure(
+                bg='SystemButtonFace'
+            )
         self.is_opened = True
 
     def show_mine(self):
-        # a logic to game over
         self.cell_btn_object.configure(bg='red')
-
+        ctypes.windll.user32.MessageBoxW(0, 'You clicked a mine', 'Game Over', 0)
+        sys.exit()
 
     @staticmethod
     def randomize_mines():
