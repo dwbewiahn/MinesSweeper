@@ -119,7 +119,7 @@ class Cell:
     def show_mine(self):
         self.cell_btn_object.configure(bg='red')
         ctypes.windll.user32.MessageBoxW(0, 'You clicked a mine', 'Game Over', 0)
-        sys.exit()
+        # sys.exit()
 
     @staticmethod
     def randomize_mines():
