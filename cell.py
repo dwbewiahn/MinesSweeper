@@ -25,6 +25,7 @@ class Cell:
             width=12,
             height=4,
 
+
         )
 
         btn.bind('<Button-1>', self.left_click_actions)
@@ -106,7 +107,9 @@ class Cell:
     def show_cell(self):
         if not self.is_opened:
             Cell.cell_count -= 1
-            self.cell_btn_object.configure(text=self.surrounded_cells_mines_length)
+            self.cell_btn_object.configure(
+                text=self.surrounded_cells_mines_length,
+            )
             if Cell.cell_count_label_object:
                 Cell.cell_count_label_object.configure(
                     text=f'Cells Left:{Cell.cell_count}'
@@ -119,7 +122,7 @@ class Cell:
     def show_mine(self):
         self.cell_btn_object.configure(bg='red')
         ctypes.windll.user32.MessageBoxW(0, 'You clicked a mine', 'Game Over', 0)
-        # sys.exit()
+        sys.exit()
 
     @staticmethod
     def randomize_mines():
