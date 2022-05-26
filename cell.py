@@ -4,6 +4,7 @@ import settings
 import ctypes
 import sys
 
+
 class Cell:
     all = []
     cell_count_label_object = None
@@ -24,7 +25,6 @@ class Cell:
             location,
             width=12,
             height=4,
-
 
         )
 
@@ -56,7 +56,6 @@ class Cell:
             # Check for Winner
             if Cell.cell_count == settings.MINES_COUNT:
                 ctypes.windll.user32.MessageBoxW(0, 'Congratulations! Won the Game!', 'Game Over', 0)
-
 
         # Lock and open cell
         self.cell_btn_object.unbind('<Button-1>')
