@@ -2,7 +2,7 @@
 
 A simple mine sweeper game developed in python
 
-The game is funtional
+The game is functional
 
 #To do :
 -Improve interface
