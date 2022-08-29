@@ -6,9 +6,9 @@ The game is functional
 
 #To do :
 
--Improve interface
--Custom game size
--Wellcome Screen
+Improve interface
+Custom game size
+Wellcome Screen
 
 
 Douglas Bewiahn
